@@ -50,10 +50,10 @@ export default function Projects() {
           tech={["C", "Pthreads", "Concurrency"]}
         />
         <ProjectCard
-  title="RESTful Shopping Cart API"
-  description="Developed a RESTful shopping cart API using FastAPI, supporting product management and cart operations."
-  tech={["Python", "FastAPI", "REST", "Backend"]}
-/>
+          title="RESTful Shopping Cart API"
+          description="Developed a RESTful shopping cart API using FastAPI, supporting product management and cart operations."
+          tech={["Python", "FastAPI", "REST", "Backend"]}
+        />
 
         <ProjectCard
           title="FORTRAN-95 Interpreter"
