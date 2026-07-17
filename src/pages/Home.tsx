@@ -1,6 +1,7 @@
 import type { MouseEvent } from "react";
 import Projects from "../components/Projects";
 import About from "../components/about";
+import FadeIn from "../components/FadeIn";
 import { FaGithub, FaLinkedin, FaPenNib, FaEnvelope } from "react-icons/fa";
 import njitSeal from "../assets/New_Jersey_IT_seal.svg.png";
 import profilePic from "../assets/naturepic.JPG";
@@ -21,9 +22,26 @@ const SKILL_GROUPS = [
 export default function Home() {
   return (
     <main className="relative min-h-screen bg-slate-950 text-slate-100">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-slate-900/95" />
-      <div className="pointer-events-none absolute -left-40 top-24 h-72 w-72 rounded-full bg-sky-500/20 blur-3xl" />
-      <div className="pointer-events-none absolute right-0 top-40 h-72 w-72 rounded-full bg-violet-500/20 blur-3xl" />
+      {/* Dot grid */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(148,163,184,0.13) 1px, transparent 1px)",
+          backgroundSize: "30px 30px",
+          maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+          WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%)",
+        }}
+      />
+
+      {/* Animated orbs */}
+      <div className="orb-1 pointer-events-none absolute -left-52 top-10 h-[520px] w-[520px] rounded-full bg-sky-500/15 blur-3xl" />
+      <div className="orb-2 pointer-events-none absolute -right-40 top-32 h-[480px] w-[480px] rounded-full bg-violet-500/18 blur-3xl" />
+      <div className="orb-3 pointer-events-none absolute left-1/3 top-[55%] h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-3xl" />
+      <div className="orb-4 pointer-events-none absolute -right-20 top-[60%] h-[360px] w-[360px] rounded-full bg-indigo-500/15 blur-3xl" />
+      <div className="orb-5 pointer-events-none absolute -left-20 top-[75%] h-[320px] w-[320px] rounded-full bg-sky-400/10 blur-3xl" />
+
+      {/* Top fade for hero contrast */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-[480px] bg-gradient-to-b from-slate-900/80 to-transparent" />
 
       <div className="relative mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
         <Link
@@ -132,7 +150,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-3">
                   <div className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">
-                    <p className="text-2xl font-bold text-white">9</p>
+                    <p className="text-2xl font-bold text-white">11</p>
                     <p className="text-xs text-slate-400">Projects</p>
                   </div>
                   <div className="flex-1 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-center">
@@ -145,10 +163,13 @@ export default function Home() {
           </div>
         </section>
 
-        <About />
+        <FadeIn delay={100}>
+          <About />
+        </FadeIn>
 
         {/* ── Skills ── */}
-        <div className="mt-20 rounded-[2rem] border border-slate-200/20 bg-white/90 p-8 shadow-xl shadow-slate-950/10">
+        <FadeIn delay={0}>
+        <div id="skills" className="mt-20 rounded-[2rem] border border-slate-200/20 bg-white/90 p-8 shadow-xl shadow-slate-950/10">
           <h2 className="text-3xl font-semibold text-slate-950">Skills</h2>
           <div className="mt-8 grid gap-8 sm:grid-cols-3">
             {SKILL_GROUPS.map(({ label, items }) => (
@@ -168,9 +189,11 @@ export default function Home() {
             ))}
           </div>
         </div>
+        </FadeIn>
 
         {/* ── Contact ── */}
-        <div className="mt-20 rounded-[2rem] border border-white/10 bg-slate-900/95 p-10 text-slate-100 shadow-2xl shadow-slate-950/40">
+        <FadeIn delay={0}>
+        <div id="contact" className="mt-20 rounded-[2rem] border border-white/10 bg-slate-900/95 p-10 text-slate-100 shadow-2xl shadow-slate-950/40">
           <div className="mx-auto max-w-4xl text-center">
             <p className="text-sm uppercase tracking-[0.32em] text-sky-300">Get in touch</p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
@@ -197,11 +220,14 @@ export default function Home() {
             </div>
           </div>
         </div>
+        </FadeIn>
 
         {/* ── Projects ── */}
+        <FadeIn delay={0}>
         <div className="mt-20">
           <Projects />
         </div>
+        </FadeIn>
       </div>
     </main>
   );
